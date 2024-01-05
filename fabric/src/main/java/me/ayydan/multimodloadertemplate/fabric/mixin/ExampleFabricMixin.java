@@ -1,4 +1,4 @@
-package me.ayydan.multimodloadertemplate.mixin;
+package me.ayydan.multimodloadertemplate.fabric.mixin;
 
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -7,11 +7,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(TitleScreen.class)
-public class MixinTitleScreen
+public class ExampleFabricMixin
 {
-    @Inject(at = @At("HEAD"), method = "init")
-    private void init(CallbackInfo info)
+    @Inject(method = "init", at = @At("HEAD"))
+    public void initTitleScreen(CallbackInfo ci)
     {
-        System.out.println("Hello from example architectury common mixin!");
+        System.out.println("Hello from the example Fabric mixin!");
     }
 }

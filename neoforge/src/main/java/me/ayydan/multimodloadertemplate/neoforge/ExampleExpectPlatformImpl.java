@@ -1,4 +1,4 @@
-package me.ayydan.multimodloadertemplate.forge;
+package me.ayydan.multimodloadertemplate.neoforge;
 
 import me.ayydan.multimodloadertemplate.ExampleExpectPlatform;
 import net.neoforged.fml.loading.FMLPaths;

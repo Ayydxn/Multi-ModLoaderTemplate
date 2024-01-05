@@ -2,8 +2,13 @@ architectury {
     common(rootProject.enabled_platforms.split(","))
 }
 
+
 loom {
-    accessWidenerPath = file("src/main/resources/multimodloadertemplate.accesswidener")
+    accessWidenerPath = file("src/main/resources/${project(":common").properties.mod_id}.accesswidener")
+
+    mixin {
+        defaultRefmapName = "${project(":common").properties.mod_id}-common.refmap.json"
+    }
 }
 
 dependencies {

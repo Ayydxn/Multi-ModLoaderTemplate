@@ -1,9 +1,10 @@
 {
   "required": true,
-  "package": "me.ayydan.multimodloadertemplate.mixin",
+  "package": "me.ayydan.multimodloadertemplate.neoforge.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
+    "ExampleNeoForgeMixin"
   ],
   "mixins": [
   ],
