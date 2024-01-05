@@ -1,0 +1,89 @@
+plugins {
+    id "architectury-plugin" version "3.4-SNAPSHOT"
+    id "dev.architectury.loom" version "1.4-SNAPSHOT" apply false
+}
+
+architectury {
+    minecraft = rootProject.minecraft_version
+}
+
+subprojects {
+    apply plugin: "dev.architectury.loom"
+
+    loom {
+        // Only does anything if you're using Mojang mappings.
+        // This simply stop Loom from warning you about the mappings' license.
+        silentMojangMappingsLicense()
+    }
+
+    dependencies {
+        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+
+        // The template comes with Quilt mappings but, you may use other mappings such as Mojang and Yarn if you want to.
+        mappings "org.quiltmc:quilt-mappings:${rootProject.minecraft_version}+build.${rootProject.quilt_mappings_version}:intermediary-v2"
+    }
+
+    processResources {
+        def expandProps = [
+                "name": rootProject.mod_name,
+                "version": rootProject.mod_version,
+                "description": rootProject.mod_description,
+                "id": rootProject.mod_id,
+                "author": rootProject.mod_author,
+                "license": rootProject.license,
+                "minecraft_version": rootProject.minecraft_version,
+                "minecraft_version_range": rootProject.minecraft_version_range,
+                "architectury_version": rootProject.architectury_version,
+                "fabric_loader_version": rootProject.fabric_loader_version,
+                "fabric_version": rootProject.fabric_api_version,
+                "neoforge_version": rootProject.neoforge_version,
+                "neoforge_version_range": rootProject.neoforge_version_range
+        ]
+
+        filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', '*.mixins.json']) {
+            expand expandProps
+        }
+
+        inputs.properties(expandProps)
+    }
+}
+
+allprojects {
+    apply plugin: "java"
+    apply plugin: "architectury-plugin"
+    apply plugin: "maven-publish"
+
+    base {
+        archivesName = rootProject.archives_base_name
+    }
+
+    version = rootProject.mod_version
+    group = rootProject.maven_group
+
+    repositories {
+        // Add repositories to retrieve artifacts from in here.
+        // You should only use this when depending on other mods because
+        // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+        // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+        // for more information about repositories.
+
+        maven {
+            name = "NeoForged"
+            url = "https://maven.neoforged.net/releases/"
+        }
+
+        maven {
+            name "Quilt"
+            url "https://maven.quiltmc.org/repository/release"
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.release = 17
+    }
+
+    java {
+        withSourcesJar()
+    }
+}

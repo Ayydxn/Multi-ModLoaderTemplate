@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "${description}",
+  "authors": [
+    "${author}"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod",
+    "issues": "https://github.com/FabricMC/fabric-example-mod/issues"
+  },
+  "license": "${license}",
+  "icon": "assets/${id}/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.ayydan.multimodloadertemplate.fabric.FabricModEntryPoint"
+    ]
+  },
+  "mixins": [
+    "${id}-common.mixins.json",
+    "${id}-fabric.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${minecraft_version}",
+    "fabric": ">=${fabric_version}",
+    "fabricloader": ">=${fabric_loader_version}"
+  }
+}

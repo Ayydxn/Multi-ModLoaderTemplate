@@ -1,0 +1,27 @@
+pluginManagement {
+    repositories {
+        maven {
+            name "FabricMC"
+            url "https://maven.fabricmc.net/"
+        }
+
+        maven {
+            name "Architectury"
+            url "https://maven.architectury.dev/"
+        }
+
+        maven {
+            name "MinecraftForge"
+            url "https://maven.minecraftforge.net/"
+        }
+
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+include("common")
+include("fabric")
+include("neoforge")
+
+rootProject.name = "Multi-Mod Loader Template"
