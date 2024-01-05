@@ -37,3 +37,4 @@ replay_*.log
 # Misc
 .metadata
 .settings
+.architectury-transformer
