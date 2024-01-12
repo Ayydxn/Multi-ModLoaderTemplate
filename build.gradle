@@ -11,16 +11,21 @@ subprojects {
     apply plugin: "dev.architectury.loom"
 
     loom {
-        // Only does anything if you're using Mojang mappings.
-        // This simply stop Loom from warning you about the mappings' license.
         silentMojangMappingsLicense()
     }
 
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
 
-        // The template comes with Quilt mappings but, you may use other mappings such as Mojang and Yarn if you want to.
-        mappings "org.quiltmc:quilt-mappings:${rootProject.minecraft_version}+build.${rootProject.quilt_mappings_version}:intermediary-v2"
+        // The template comes with Mojang mappings but, you may use other mappings such as Yarn and Quilt if you wa
+        mappings loom.officialMojangMappings()
+    }
+
+    repositories {
+        maven {
+            name "NeoForged"
+            url "https://maven.neoforged.net/releases/"
+        }
     }
 
     processResources {
@@ -30,10 +35,13 @@ subprojects {
                 "description": rootProject.mod_description,
                 "id": rootProject.mod_id,
                 "author": rootProject.mod_author,
+                "icon_path": rootProject.icon_path,
+                "issue_tracker_url": rootProject.issue_tracker_url,
                 "license": rootProject.license,
                 "minecraft_version": rootProject.minecraft_version,
                 "minecraft_version_range": rootProject.minecraft_version_range,
                 "architectury_version": rootProject.architectury_version,
+                "architectury_version_range": rootProject.architectury_version_range,
                 "fabric_loader_version": rootProject.fabric_loader_version,
                 "fabric_version": rootProject.fabric_api_version,
                 "neoforge_version": rootProject.neoforge_version,
@@ -66,16 +74,6 @@ allprojects {
         // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
         // See https://docs.gradle.org/current/userguide/declaring_repositories.html
         // for more information about repositories.
-
-        maven {
-            name = "NeoForged"
-            url = "https://maven.neoforged.net/releases/"
-        }
-
-        maven {
-            name "Quilt"
-            url "https://maven.quiltmc.org/repository/release"
-        }
     }
 
     tasks.withType(JavaCompile) {

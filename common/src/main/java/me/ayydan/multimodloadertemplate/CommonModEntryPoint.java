@@ -6,6 +6,6 @@ public class CommonModEntryPoint
 
     public static void init()
     {
-        System.out.println(ExampleExpectPlatform.getConfigDirectory().toAbsolutePath().normalize().toString());
+        System.out.printf("Config Dir: %s\n", ExampleExpectPlatform.getConfigDirectory().toAbsolutePath().normalize().toString());
     }
 }

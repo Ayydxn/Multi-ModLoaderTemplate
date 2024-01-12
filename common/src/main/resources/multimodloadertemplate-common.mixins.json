@@ -4,12 +4,11 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "MixinTitleScreen"
+    "CommonExampleMixin"
   ],
   "mixins": [
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "refmap": "$id-common.refmap.json"
+  }
 }
