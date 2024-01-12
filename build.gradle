@@ -36,6 +36,7 @@ subprojects {
                 "id": rootProject.mod_id,
                 "author": rootProject.mod_author,
                 "icon_path": rootProject.icon_path,
+                "issue_tracker_url": rootProject.issue_tracker_url,
                 "license": rootProject.license,
                 "minecraft_version": rootProject.minecraft_version,
                 "minecraft_version_range": rootProject.minecraft_version_range,

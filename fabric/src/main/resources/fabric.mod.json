@@ -10,7 +10,7 @@
   "contact": {
     "homepage": "https://github.com/Ayydxn/Multi-ModLoaderTemplate",
     "sources": "https://github.com/Ayydxn/Multi-ModLoaderTemplate",
-    "issues": "https://github.com/Ayydxn/Multi-ModLoaderTemplate/issues"
+    "issues": "${issue_tracker_url}"
   },
   "license": "${license}",
   "icon": "${icon_path}",
