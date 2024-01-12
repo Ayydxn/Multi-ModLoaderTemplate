@@ -14,16 +14,16 @@ public class ExampleExpectPlatform
      * platform sub-package, with its class suffixed with {@code Impl}.
      * <p>
      * Example:
-     * Expect: net.examplemod.ExampleExpectPlatform#getConfigDirectory()
-     * Actual Fabric: net.examplemod.fabric.ExampleExpectPlatformImpl#getConfigDirectory()
-     * Actual Forge: net.examplemod.forge.ExampleExpectPlatformImpl#getConfigDirectory()
+     * Expect: me.ayydan.multimodloadertemplate.ExampleExpectPlatform#getConfigDirectory()
+     * Actual Fabric: me.ayydan.multimodloadertemplate.fabric.ExampleExpectPlatformImpl#getConfigDirectory()
+     * Actual NeoForge: me.ayydan.multimodloadertemplate.neoforge.ExampleExpectPlatformImpl#getConfigDirectory()
      * <p>
      * <a href="https://plugins.jetbrains.com/plugin/16210-architectury">You should also get the IntelliJ plugin to help with @ExpectPlatform.</a>
      */
     @ExpectPlatform
     public static Path getConfigDirectory()
     {
-        // Just throw an error, the content should get replaced at runtime.
+        // Throw an error, the contents of this function should get replaced at runtime.
         throw new AssertionError();
     }
 }

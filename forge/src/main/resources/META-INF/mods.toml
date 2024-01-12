@@ -1,32 +1,39 @@
 modLoader = "javafml"
-loaderVersion = "[2,)"
+loaderVersion = "[1,)"
 issueTrackerURL = "https://github.com/MinecraftForge/MinecraftForge/issues" # Change this to the link to your mod's issue tracker.
 license = "${license}"
 
 [[mods]]
 modId = "${id}"
-version = "${version}"
 displayName = "${name}"
-authors = "${author}"
+version = "${version}"
 description = '''${description}'''
-logoFile = "assets/${id}/icon.png"
+authors = "${author}"
+logoFile = "${icon_path}"
 
 [[mixins]]
 config = "${id}-common.mixins.json"
 
 [[mixins]]
-config = "${id}-forge.mixins.json"
+config = "${id}.mixins.json"
 
 [[dependencies.${id}]]
 modId = "minecraft"
-type = "required"
+mandatory = true
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${id}]]
 modId = "neoforge"
-type = "required"
+mandatory = true
 versionRange = "${neoforge_version_range}"
 ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "architectury"
+mandatory = true
+versionRange = "${architectury_version_range}"
+ordering = "AFTER"
 side = "BOTH"
