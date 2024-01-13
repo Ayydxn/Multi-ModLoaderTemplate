@@ -17,7 +17,7 @@ subprojects {
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
 
-        // The template comes with Mojang mappings but, you may use other mappings such as Yarn and Quilt if you wa
+        // The template comes with Mojang mappings but, you may use other mappings such as Yarn and Quilt if you want.
         mappings loom.officialMojangMappings()
     }
 
