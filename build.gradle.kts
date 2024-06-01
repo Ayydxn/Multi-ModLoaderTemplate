@@ -4,6 +4,7 @@ plugins {
     java
     id("architectury-plugin") version "3.4-SNAPSHOT"
     id("dev.architectury.loom") version "1.6-SNAPSHOT" apply false
+    id("io.github.pacifistmc.forgix") version "1.2.9"
 }
 
 architectury {
@@ -21,7 +22,11 @@ subprojects {
         "minecraft"("com.mojang:minecraft:${rootProject.property("minecraft_version")}")
 
         // The template comes with Mojang mappings, but you may use other mappings such as Yarn and Quilt if you want.
-        "mappings"(loom.officialMojangMappings())
+        @Suppress("UnstableApiUsage")
+        "mappings"(loom.layered {
+            officialMojangMappings()
+            parchment("org.parchmentmc.data:parchment-${rootProject.property("minecraft_version")}:${rootProject.property("parchment_version")}@zip")
+        })
     }
 
     tasks.processResources {
@@ -70,6 +75,10 @@ allprojects {
 
         maven("https://maven.neoforged.net/releases/") {
             name = "NeoForged"
+        }
+
+        maven("https://maven.parchmentmc.org") {
+            name = "ParchmentMC"
         }
     }
 
