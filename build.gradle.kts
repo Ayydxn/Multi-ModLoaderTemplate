@@ -3,7 +3,7 @@ import net.fabricmc.loom.api.LoomGradleExtensionAPI
 plugins {
     java
     id("architectury-plugin") version "3.4-SNAPSHOT"
-    id("dev.architectury.loom") version "1.4-SNAPSHOT" apply false
+    id("dev.architectury.loom") version "1.6-SNAPSHOT" apply false
 }
 
 architectury {
@@ -12,6 +12,7 @@ architectury {
 
 subprojects {
     apply(plugin = "dev.architectury.loom")
+    apply(plugin = "architectury-plugin")
 
     val loom = project.extensions.getByName<LoomGradleExtensionAPI>("loom")
     loom.silentMojangMappingsLicense()
@@ -19,7 +20,7 @@ subprojects {
     dependencies {
         "minecraft"("com.mojang:minecraft:${rootProject.property("minecraft_version")}")
 
-        // The template comes with Mojang mappings but, you may use other mappings such as Yarn and Quilt if you want.
+        // The template comes with Mojang mappings, but you may use other mappings such as Yarn and Quilt if you want.
         "mappings"(loom.officialMojangMappings())
     }
 
@@ -28,7 +29,7 @@ subprojects {
                 "name" to rootProject.property("mod_name"),
                 "version" to rootProject.property("mod_version"),
                 "description" to rootProject.property("mod_description"),
-                "id" to rootProject.property("mod_id"),
+                "mod_id" to rootProject.property("mod_id"),
                 "author" to rootProject.property("mod_author"),
                 "icon_path" to rootProject.property("icon_path"),
                 "issue_tracker_url" to rootProject.property("issue_tracker_url"),
@@ -45,7 +46,7 @@ subprojects {
 
         inputs.properties(expandProps)
 
-        filesMatching(listOf("pack.mcmeta", "fabric.mod.json", "META-INF/mods.toml", "*.mixins.json")) {
+        filesMatching(listOf("pack.mcmeta", "fabric.mod.json", "META-INF/neoforge.mods.toml", "*.mixins.json")) {
             expand(expandProps)
         }
     }
@@ -74,10 +75,13 @@ allprojects {
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
-        options.release = 17
+        options.release = 21
     }
 
     java {
         withSourcesJar()
+
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }

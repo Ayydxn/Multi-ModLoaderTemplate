@@ -26,10 +26,10 @@ configurations {
 dependencies {
     neoForge("net.neoforged:neoforge:${rootProject.property("neoforge_version")}")
 
-    modApi("dev.architectury:architectury-neoforge:${rootProject.property("architectury_version")}")
+    modImplementation("dev.architectury:architectury-neoforge:${rootProject.property("architectury_version")}")
 
     common(project(":common", configuration = "namedElements")) { isTransitive = false }
-    shadowCommon(project(":common", configuration = "transformProductionFabric")) { isTransitive = false }
+    shadowCommon(project(":common", configuration = "transformProductionNeoForge")) { isTransitive = false }
 }
 
 val javaComponent = components.getByName<AdhocComponentWithVariants>("java")
@@ -41,7 +41,7 @@ tasks {
     processResources {
         inputs.property("version", project.version)
 
-        filesMatching("META-INF/mods.toml") {
+        filesMatching("META-INF/neoforge.mods.toml") {
             expand("version" to project.version)
         }
     }

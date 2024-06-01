@@ -4,7 +4,7 @@
 
 An easy-to-use Minecraft mod template that is able to compile mods for Fabric and NeoForge using a common sourceset and Architectury as a way to connect everything together. Note that your mods won't need the Architectury API installed alongside them in order to work, and can be easily removed as a dependency if you don't need it.
 
-In addition, it follows **DRY** (Don't Repeat Yourself). This means that you can change any of your mod's details in the gradle.properties file and have those changes be automatically reflected in your fabric.mod.json and mods.toml files.
+In addition, it follows **DRY** (Don't Repeat Yourself). This means that you can change any of your mod's details in the gradle.properties file and have those changes be automatically reflected in your fabric.mod.json and neoforge.mods.toml files.
 
 Lastly, for those of you who use GitHub Actions, it comes with a [super basic workflow file](https://github.com/Ayydxn/Multi-ModLoaderTemplate/blob/master/.github/workflows/build.yml) that will build your mod on every pull request and push to your repository.
 

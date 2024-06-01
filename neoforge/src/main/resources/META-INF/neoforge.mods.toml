@@ -4,7 +4,7 @@ issueTrackerURL = "${issue_tracker_url}" # Change this to the link to your mod's
 license = "${license}"
 
 [[mods]]
-modId = "${id}"
+modId = "${mod_id}"
 displayName = "${name}"
 version = "${version}"
 description = '''${description}'''
@@ -12,26 +12,26 @@ authors = "${author}"
 logoFile = "${icon_path}"
 
 [[mixins]]
-config = "${id}-common.mixins.json"
+config = "${mod_id}-common.mixins.json"
 
 [[mixins]]
-config = "${id}.mixins.json"
+config = "${mod_id}.mixins.json"
 
-[[dependencies.${id}]]
+[[dependencies.${mod_id}]]
 modId = "minecraft"
 type = "required"
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.${id}]]
+[[dependencies.${mod_id}]]
 modId = "neoforge"
 type = "required"
 versionRange = "${neoforge_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.${id}]]
+[[dependencies.${mod_id}]]
 modId = "architectury"
 type = "required"
 versionRange = "${architectury_version_range}"
