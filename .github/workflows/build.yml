@@ -13,7 +13,7 @@ jobs:
           21,    # Current Java LTS & minimum supported by Minecraft
         ]
         # Run on these operating systems
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Repository
