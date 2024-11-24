@@ -1,3 +1,5 @@
+import groovy.lang.Closure
+import io.github.pacifistmc.forgix.plugin.ForgixMergeExtension
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
 
 plugins {
@@ -11,6 +13,22 @@ architectury {
     minecraft = rootProject.property("minecraft_version").toString()
 }
 
+@Suppress("UNCHECKED_CAST")
+configure<ForgixMergeExtension> {
+    group = "${rootProject.property("maven_group")}.iridium"
+    mergedJarName = "${rootProject.property("archives_base_name").toString()}-${rootProject.property("mod_version")}.jar"
+    outputDir = "build/forgix"
+
+    fabric(closureOf<ForgixMergeExtension.FabricContainer> {
+        jarLocation = "build/libs/${rootProject.property("archives_base_name").toString()}-${rootProject.property("mod_version")}-fabric.jar"
+    } as Closure<ForgixMergeExtension.FabricContainer>)
+
+    custom(closureOf<ForgixMergeExtension.CustomContainer> {
+        projectName = "neoforge"
+        jarLocation = "build/libs/${rootProject.property("archives_base_name").toString()}-${rootProject.property("mod_version")}-neoforge.jar"
+    } as Closure<ForgixMergeExtension.CustomContainer>)
+}
+
 subprojects {
     apply(plugin = "dev.architectury.loom")
     apply(plugin = "architectury-plugin")
@@ -22,11 +40,7 @@ subprojects {
         "minecraft"("com.mojang:minecraft:${rootProject.property("minecraft_version")}")
 
         // The template comes with Mojang mappings, but you may use other mappings such as Yarn and Quilt if you want.
-        @Suppress("UnstableApiUsage")
-        "mappings"(loom.layered {
-            officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-${rootProject.property("minecraft_version")}:${rootProject.property("parchment_version")}@zip")
-        })
+        "mappings"(loom.officialMojangMappings())
     }
 
     tasks.processResources {

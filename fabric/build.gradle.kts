@@ -7,7 +7,7 @@ architectury {
     fabric()
 }
 
-base.archivesName.set("${rootProject.property("archives_base_name").toString()}-fabric")
+base.archivesName.set(rootProject.property("archives_base_name").toString())
 
 loom {
     accessWidenerPath.set(project(":common").loom.accessWidenerPath)

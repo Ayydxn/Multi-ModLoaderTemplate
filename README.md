@@ -22,7 +22,7 @@ Please note that while the issue tracker is also open to feature requests such a
 
 ### 📃 Requirements
 
-- A JDK (Java Development Kit) for Java 17.
+- A JDK (Java Development Kit) for Java 21.
   - I recommend using the [Azul Zulu]() distribution as this is what the template is built with. However, any JDK distribution should work perfectly fine.
 
 - Any Java IDE such as [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Eclipse](https://www.eclipse.org/ide/). You may also use other code editors with support for Java and Gradle such as [Visual Studio Code](https://code.visualstudio.com/).
